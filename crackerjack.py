@@ -8,27 +8,29 @@ import copy
 def main():
 
     foundPasswords = {}
-    hashDictFiles = ['simpleDict.txt', 'dateDict.txt', 'numDict.txt', 'tampaPhoneNumDict.txt', 'doubleDict.txt']
+    hashTableFiles = ['simpleHash.txt', 'dateHash.txt', 'numHash.txt', 'tampaPhoneNumHash.txt', 'doubleHash.txt', 'simpleAppend3DigitHash.txt']
 
-    # check if hash files exist and generate them if not
-    if not exists('simpleDict.txt'):
-        hu.makeSimpleDictFile()
-    if not exists('dateDict.txt'):
-        hu.makeDateDictFile()
-    if not exists('numDict.txt'):
-        hu.makeNumDictFile()
-    if not exists('tampaPhoneNumDict.txt'):
-        hu.makeTampaPhoneNumDictFile()
-    if not exists('doubleDict.txt'):
-        hu.makeDoubleDictFile()
+    # check if hash files exist and generate them if not (ideally, this would use OOP callback funcs instead)
+    if not exists('simpleHash.txt'):
+        hu.makeSimpleHashTable()
+    if not exists('dateHash.txt'):
+        hu.makeDateHashTable()
+    if not exists('numHash.txt'):
+        hu.makeNumHashTable()
+    if not exists('tampaPhoneNumHash.txt'):
+        hu.makeTampaPhoneNumHashTable()
+    if not exists('doubleHash.txt'):
+        hu.makeDoubleHashTable()
+    if not exists('simpleAppend3DigitHash.txt'):
+        hu.makeSimpleAppend3DigitHashTable()
 
     passHashes = hu.readHashFile('passwords.txt') # read password hashes into memory
     foundPasswords = copy.deepcopy(passHashes)
 
     # compare each known hash to each unknown hash
-    for dictFile in hashDictFiles: # iterate through dictionary files
-        with open(dictFile) as f:
-            print(f'\nScanning hashes with {dictFile}')
+    for hashTable in hashTableFiles: # iterate through dictionary files
+        with open(hashTable) as f:
+            print(f'\nScanning hashes with {hashTable}')
             for line in f:
                 word, hash = line.split()
                 for id, passHash in passHashes.items(): # iterate through hashed passwords

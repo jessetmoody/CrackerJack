@@ -5,7 +5,7 @@
     <ProjectGuid>3eed7cbe-5904-439b-8c3f-1c669f6803cb</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>hash_utils.py</StartupFile>
+    <StartupFile>crackerjack.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
